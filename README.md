@@ -2,3 +2,6 @@
 
 ## Table of contents
 
+1. [Block](#block)
+
+### Block
