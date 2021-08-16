@@ -1,10 +1,15 @@
 //1. Sizing the block
-@mixin block($width, $height:$width) {
+@mixin block($width, $height:$width, $radius: 0) {
   width: $width;
   height: $height;
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
 }
 
-@mixin max-size($width, $height:$width) {
+@mixin frame(
+  $width, $height:auto, $max-width: 0, $max-height: 0
+) {
   max-width: $width;
   height: $height;
 }
