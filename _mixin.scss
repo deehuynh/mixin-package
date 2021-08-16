@@ -1,5 +1,5 @@
 //1. Sizing the block
-@mixin size($width, $height:$width) {
+@mixin block($width, $height:$width) {
   width: $width;
   height: $height;
 }
