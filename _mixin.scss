@@ -7,10 +7,11 @@
   }
 }
 
-// Sizing the frame
+//2. Sizing the frame
 
 @mixin frame(
-  $width, $height:auto, $margin: 0
+  $width, $height:auto, $margin: 0,
+  $bg: 0 
 ) {
   max-width: $width;
   height: $height;
@@ -20,13 +21,8 @@
       right: auto;
     }
   }
-}
-
-//2. align a block to center
-@mixin block_center {
-  margin: { 
-    left: auto;
-    right: auto;
+  @if $bg != 0 {
+    background-color: $bg;
   }
 }
 
@@ -72,6 +68,7 @@
   $weight: 0, $spacing: 0
 ) {
   text-decoration: none;
+  user-select: none;
 
   @if $color != 0 {
     color: $color;
@@ -179,15 +176,67 @@
 
 //9. Text
 @mixin text (
-  $color: white,
+  $transform: 0,
+  $color: 0,
+  $weight: 0,
   $indent: 0,
   $align: 0, 
 ) {
-  color: $color;
+  @if $transform != 0 {
+    text-transform: $transform;
+  }
+  @if $color != 0 {
+    color: $color;
+  }
+  @if $weight != 0 {
+    font-weight: $weight;
+  }
   @if $indent != 0 {
     text-indent: $indent;
   }
   @if $align != 0 {
     text-align: $align;
+  }
+}
+
+//10. Button
+@mixin button (
+  $bg: 0,
+  $radius: 0,
+  $pd-all: 0, 
+  $pd-top: $pd-all, 
+  $pd-right: $pd-all,
+  $pd-bottom: $pd-all, 
+  $pd-left: $pd-all
+) {
+  cursor: pointer;
+  @if $bg != 0 {
+    background: $bg;
+  }
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+  padding: {
+    top: $pd-top;
+    right: $pd-right;
+    bottom: $pd-bottom;
+    left: $pd-left;
+  }
+}
+
+//11. padding + box-sizing
+@mixin padding (
+  $pd-all: 0, 
+  $pd-top: $pd-all, 
+  $pd-right: $pd-all,
+  $pd-bottom: $pd-all, 
+  $pd-left: $pd-all
+) {
+  box-sizing: border-box;
+  padding: {
+    top: $pd-top;
+    right: $pd-right;
+    bottom: $pd-bottom;
+    left: $pd-left;
   }
 }
