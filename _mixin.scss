@@ -247,3 +247,53 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+//13. Gradient border
+@mixin gradient-border ($size: 0, $radius: 0) {
+  &::after {
+    border-radius: $radius;
+    position: absolute;
+    content: "";
+    background: $c-linear;
+    bottom: $size;
+    left: $size;
+    right: $size;
+    top: $size;
+    z-index: -1;
+  }
+}
+
+//14. Modal
+@mixin modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  @include block(100%);
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+/*  RESPONSIVE  */ 
+@mixin media (
+  $size,
+  $width: 'max'
+) {
+  @if $width == 'min' {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $size) {
+      @content;
+    }
+  }
+}
+
+@mixin input {
+  outline: none;
+  box-sizing: border-box;
+  &::placeholder {
+    opacity: 1;
+  }
+}
